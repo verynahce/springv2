@@ -1,7 +1,7 @@
 package com.metacoding.spirngv1.domain;
 
-import jakarta.persistence.EntityManager;
-import org.junit.jupiter.api.Assertions;
+import com.metacoding.spirngv1.domain.board.Board;
+import com.metacoding.spirngv1.domain.board.BoardRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -19,7 +19,7 @@ public class BoardRepositoryTest {
     @Test
     public void findById_test() {
         //given
-        int id = 5;
+        int id = 1;
         //when
         Board board = boardRepository.findById(id);
 
@@ -28,9 +28,13 @@ public class BoardRepositoryTest {
             System.out.println("조회가 안됬어!! 번호가 없나봐");
 
         } else {
-            System.out.println(board.getId());
+            System.out.println("게시판 이름" + board.getId());
             System.out.println(board.getTitle());
             System.out.println(board.getContent());
+            System.out.println("유저이름 : " + board.getUser().getUsername());
+            System.out.println(board.getUser().getEmail());
+            System.out.println(board.getUser().getId());
+            System.out.println(board.getUser().getPassword());
         }
 
 
@@ -48,9 +52,13 @@ public class BoardRepositoryTest {
             System.out.println("조회가 안됬어!! 번호가 없나봐2");
 
         } else {
-            System.out.println(board.getId());
+            System.out.println("게시판2 이름" + board.getId());
             System.out.println(board.getTitle());
             System.out.println(board.getContent());
+            System.out.println("유저이름2 : " + board.getUser().getUsername());
+            System.out.println(board.getUser().getEmail());
+            System.out.println(board.getUser().getId());
+            System.out.println(board.getUser().getPassword());
         }
 
     }
@@ -71,7 +79,7 @@ public class BoardRepositoryTest {
 
     @Test
     public void findAll_test2() {
-        List<Board> boardList = boardRepository.findAllV2();
+        List<Board> boardList = boardRepository.findAll();
 
         for (Board board : boardList) {
             System.out.println(board.getId());
@@ -87,8 +95,9 @@ public class BoardRepositoryTest {
         //given
         String title = "제목6";
         String content = "내용6";
+
         //when
-        boardRepository.save(title, content);
+        boardRepository.save(title, content,1);
 
         //eye
         Board findBoard = boardRepository.findById(6);
@@ -128,7 +137,7 @@ public class BoardRepositoryTest {
         //when
         boardRepository.deleteById(id);
         //eye
-        List<Board> boardList = boardRepository.findAllV2();
+        List<Board> boardList = boardRepository.findAll();
 
         System.out.println(boardList.size());
 

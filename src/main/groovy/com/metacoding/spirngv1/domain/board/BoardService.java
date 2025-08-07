@@ -1,4 +1,4 @@
-package com.metacoding.spirngv1.domain;
+package com.metacoding.spirngv1.domain.board;
 
 import com.metacoding.spirngv1.DTO.BoardDetailResponseDTO;
 import com.metacoding.spirngv1.DTO.BoardResponseDTO;
@@ -6,7 +6,6 @@ import com.metacoding.spirngv1.DTO.BoardSaveRequestDTO;
 import com.metacoding.spirngv1.DTO.BoardUpdateRequestDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ public class BoardService {
     @Transactional
     public void 게시글쓰기(BoardSaveRequestDTO boardSaveRequestDTO){
         //독립적인게 좋다. 그래서 꺼내서 뿌린다. 재사용성을 위해서
-        boardRepository.save(boardSaveRequestDTO.getTitle(),boardSaveRequestDTO.getContent());
+        boardRepository.save(boardSaveRequestDTO.getTitle(),boardSaveRequestDTO.getContent(),1);
     }
 
     @Transactional

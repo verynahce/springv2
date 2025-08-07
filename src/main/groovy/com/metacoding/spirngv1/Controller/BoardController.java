@@ -4,7 +4,7 @@ import com.metacoding.spirngv1.DTO.BoardDetailResponseDTO;
 import com.metacoding.spirngv1.DTO.BoardResponseDTO;
 import com.metacoding.spirngv1.DTO.BoardSaveRequestDTO;
 import com.metacoding.spirngv1.DTO.BoardUpdateRequestDTO;
-import com.metacoding.spirngv1.domain.BoardService;
+import com.metacoding.spirngv1.domain.board.BoardService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
